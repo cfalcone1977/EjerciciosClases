@@ -46,8 +46,6 @@ export class RegistroAutomotor{
                  console.table(this.vehiculosRegistrados[indice]);
                  console.warn("----------------------------------------------");
                      }
-
-
    }
 
    mostrarListadoVehiculos(){
