@@ -1,4 +1,4 @@
-class Traccion{
+export class Traccion{
     onOff:boolean=false;
     velocidad:number=0;
     modocaja:string="P";
@@ -50,7 +50,7 @@ class Traccion{
   
   }
 
-class Camioneta{
+export class Camioneta{
     // valores irrelevantes en la logica
     private marca: string; 
     private motor:string;
@@ -138,62 +138,3 @@ class Camioneta{
        }        
     }
 }
-
-
-
-
-
-const sisTraccion1= new Traccion(false,0,"P",false,true,false,false);
-const fordF100 = new Camioneta("ford","V8","AT100",true,sisTraccion1); //false,0,"P",false,true,false,false); //(onOff:boolean, velocidad:number, modocaja:string, freno:boolean,simple:boolean,alta:boolean,baja:boolean)
-//(fabricante:string, tipoMotor:string, modeloCaja: string, AT:boolean, powerOnOff:boolean, velocidad:number,modocaja:string, freno:boolean,simple:boolean,alta:boolean,baja:boolean)
-fordF100.infoEstado();
-fordF100.cajaUp();
-fordF100.infoEstado();
-fordF100.PresionoFreno();
-fordF100.cajaUp();
-fordF100.infoEstado();
-fordF100.cajaUp();
-fordF100.infoEstado();
-fordF100.cajaDown();
-fordF100.cajaDown();
-fordF100.infoEstado();
-fordF100.startStopBoton();
-fordF100.infoEstado();
-fordF100.PresionoFreno();
-fordF100.cajaUp();
-fordF100.cajaUp();
-fordF100.cajaUp();
-fordF100.infoEstado();
-fordF100.SueltoFreno();
-for (let i = 0; i < 25; i=i+1) {
-    fordF100.aceleraUp();
-}
-fordF100.infoEstado();
-fordF100.PresionoFreno();
-for (let i = 0; i < 25; i=i+1) {
-    fordF100.acelerarDown();
-}
-fordF100.infoEstado();
-fordF100.cajaDown();
-fordF100.cajaDown();
-fordF100.cajaDown();
-fordF100.startStopBoton();
-fordF100.infoEstado();
-console.log(fordF100);
-fordF100.startStopBoton();
-//fordF100.activarDobletraccionAlta();
-fordF100.infoEstado();
-fordF100.cajaUp();
-fordF100.cajaUp();
-fordF100.cajaUp();
-fordF100.SueltoFreno();
-for (let i = 0; i < 25; i=i+1) {
-    fordF100.aceleraUp();
-}
-fordF100.PresionoFreno();
-for (let i = 0; i < 15; i=i+1) {
-    fordF100.acelerarDown();
-}
-fordF100.SueltoFreno();
-fordF100.activarDobletraccionAlta();
-fordF100.infoEstado();

@@ -82,29 +82,54 @@ export class Libro{
   
     }
 
-    modificarLibro(libroModificado:Libro,posicion:number){
-        this.arrayLibros.splice(posicion,1,libroModificado);
-        console.warn("***LIBRO MODIFICADO***");
+    modificarLibro(libroaModificar:Libro){
+        let posicion=this.buscarLibroISBN(libroaModificar.isbn);
+        if (posicion!=-1){
+            this.arrayLibros.splice(posicion,1,libroaModificar);
+            console.warn("***LIBRO MODIFICADO***");
+        } else {
+                 console.warn("***LIBRO INEXISTENTE***");
+               }
     }
  
-    eliminarLibro(posicion:number){
-        this.arrayLibros.splice(posicion,1);
-        console.warn("***LIBRO ELIMINADO***");
+    eliminarLibro(isbn:string){
+        let posicion=this.buscarLibroISBN(isbn);
+        if (posicion!=-1){
+                this.arrayLibros[posicion].activo=false;
+                console.warn("***LIBRO ELIMINADO(BAJA LOGICA)**");
+                         } else {
+                               console.warn("***LIBRO INEXISTENTE**");
+                                } 
+
     }
 
-    mostrarbiblioteca(){
-        console.warn("***MOSTRANDO BIBLIOTECA***");
-        this.arrayLibros.forEach(elemento=>{
-              console.log(elemento.titulo);
-              console.log(elemento.autor);
-              console.log(elemento.genero);
-              console.log(elemento.tipo);
-              console.log(elemento.paginas);
-              console.log(elemento.activo);
-              console.log(elemento.isbn);
-              console.log("----------------------------");
-        })
-
+    mostrarbiblioteca(todos?:string){
+        console.warn("***MOSTRANDO BIBLIOTECA***"+(todos==="T"?"COMPLETA":""));
+        if (todos==="T"){
+                    this.arrayLibros.forEach(elemento=>{
+                     console.log(elemento.titulo);
+                     console.log(elemento.autor);
+                     console.log(elemento.genero);
+                     console.log(elemento.tipo);
+                     console.log(elemento.paginas);
+                     console.log(elemento.activo);
+                     console.log(elemento.isbn);
+                     console.log("----------------------------");
+                      })
+                        } else {
+                          this.arrayLibros.forEach(elemento=>{
+                            if (elemento.activo) {
+                              console.log(elemento.titulo);
+                              console.log(elemento.autor);
+                              console.log(elemento.genero);
+                              console.log(elemento.tipo);
+                              console.log(elemento.paginas);
+                              console.log(elemento.activo);
+                              console.log(elemento.isbn);
+                              console.log("----------------------------");
+                                                 }
+                              })
+                          }
     }
  }
 

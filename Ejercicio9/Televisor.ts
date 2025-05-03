@@ -5,7 +5,7 @@
 
 import { Decodificador } from "./Decodificador";
 
-class Televisor extends Decodificador{
+export class Televisor extends Decodificador{
     brand: string;
     private volume: number = 0;
     private channel: number = 1;
@@ -94,42 +94,3 @@ class Televisor extends Decodificador{
     }
 
     }
-
-    const TV1 = new Televisor("TLC");  
-    TV1.switchPower(); 
-    TV1.info();
-    TV1.volumeUp();
-    TV1.volumeUp();
-    TV1.muteOnOff();
-    TV1.volumeUp();
-    TV1.volumeDown();
-    TV1.volumeDown();
-    TV1.volumeDown();
-    TV1.volumeDown();
-    TV1.volumeUp();
-    TV1.info();
-    TV1.switchPower(); 
-    TV1.info();
-    TV1.volumeUp();
-    TV1.volumeUp();
-    TV1.volumeUp();
-    TV1.volumeUp();
-    TV1.info();
-    TV1.switchPower();
-    TV1.volumeUp();
-    TV1.info();
-    TV1.switchPower();
-    TV1.info();
-    TV1.switchPower();
-    TV1.info();
-    TV1.channelDown();
-    TV1.channelDown();
-    TV1.channelUp();
-    TV1.channelUp();
-    TV1.channelUp();
-    TV1.info();
-    TV1.PowerOnOffDeco();
-    TV1.consultaDeco();
-    TV1.channelUp(); 
-    TV1.consultaDeco();  
-    

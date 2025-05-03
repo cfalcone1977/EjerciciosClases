@@ -1,4 +1,4 @@
-class Calculadora{
+export class Calculadora{
  numero1:number;
  numero2:number;   
 
@@ -48,13 +48,6 @@ class Calculadora{
                                                           }
  }
 }
-
-
-const Calcular = new Calculadora(18,-1);
-let resultado:number=0;
-
-resultado=Calcular.sumar();
-Calcular.mostrarResultado(resultado,"sumar");
                     
 
 

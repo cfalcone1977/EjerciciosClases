@@ -1,4 +1,4 @@
-class Dado{
+export class Dado{
     VDA:number=0;
     constructor(){
         this.VDA=(Math.floor(Math.random()*6))+1;
@@ -11,11 +11,4 @@ class Dado{
         console.log(`El dado fue lanzado, su valor es: ${this.VDA}`);
     }
 
-}
-
-const dados = new Dado;
-
-
-for (let i = 0; i < 50; i=i+1) {
-    dados.lanzarDado();    
 }

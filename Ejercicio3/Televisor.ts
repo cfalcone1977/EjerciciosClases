@@ -1,4 +1,4 @@
-class Televisor {
+export class Televisor {
     private brand: string;
     private volume: number = 0;
     private channel: number = 1;
@@ -81,38 +81,3 @@ class Televisor {
       }   
      }
     }
-
-const TV1 = new Televisor("TLC");   
-TV1.switchPower(); 
-TV1.info();
-TV1.volumeUp();
-TV1.volumeUp();
-TV1.muteOnOff();
-TV1.volumeUp();
-TV1.volumeDown();
-TV1.volumeDown();
-TV1.volumeDown();
-TV1.volumeDown();
-TV1.volumeUp();
-TV1.info();
-TV1.switchPower(); 
-TV1.info();
-TV1.volumeUp();
-TV1.volumeUp();
-TV1.volumeUp();
-TV1.volumeUp();
-TV1.info();
-TV1.switchPower();
-TV1.volumeUp();
-TV1.info();
-TV1.switchPower();
-console.log("estado actual");
-TV1.info();
-TV1.channelUp;
-TV1.channelUp;
-TV1.channelUp;
-TV1.switchPower();
-TV1.info();
-TV1.channelDown();
-TV1.channelDown();
-TV1.info();
