@@ -1,23 +1,22 @@
 import * as readlineSync from 'readline-sync';
-import { Persona } from "./persona";
-import { Cubilete } from "./cubilete";
+import { Persona } from './persona';
+import { Cubilete, Dado } from "./cubilete";
 
-export class Generala extends Cubilete{
-  dados:number[];
+export class Generala{
+  cubilete:Cubilete;
   
-  constructor(dados:number[]){
-      super(dados);
-      this.dados=dados;
+  constructor(cubilete1:Cubilete){
+      this.cubilete=cubilete1;
   }
 
-  ordenarDados(dadosD:number[]):number[]{
+  ordenarDados(dadosD:Dado[]):Dado[]{
      let aux:number=0;
      for (let i = 0; i < dadosD.length; i=i+1) {
         for (let i2 = 0; i2 < dadosD.length; i2=i2+1) {
-              if (dadosD[i]<dadosD[i2]){
-                                     aux=dadosD[i2];
-                                     dadosD[i2]=dadosD[i];
-                                     dadosD[i]=aux;    
+              if (dadosD[i].VDA<dadosD[i2].VDA){
+                                     aux=dadosD[i2].VDA;
+                                     dadosD[i2].VDA=dadosD[i].VDA;
+                                     dadosD[i].VDA=aux;    
                                        }
             
         }        
@@ -26,22 +25,22 @@ export class Generala extends Cubilete{
   }
 
 
-  puntosObtenidos(dados:number[]):number{
-    let dO:number[]=this.ordenarDados(dados);
+  puntosObtenidos(dados:Dado[]):number{
+    let dO:Dado[]=this.ordenarDados(dados);
     let puntos:number=0
-    if (((dO[0]<dO[1]) && (dO[1]===dO[0]+1)) && ((dO[1]<dO[2]) && (dO[2]===((dO[1])+1))) && ((dO[2]<dO[3])&&(dO[3]===dO[2]+1)) && ((dO[3]<dO[4])&&(dO[4]===dO[3]+1))){
+    if (((dO[0].VDA<dO[1].VDA) && (dO[1].VDA===dO[0].VDA+1)) && ((dO[1].VDA<dO[2].VDA) && (dO[2].VDA===((dO[1].VDA)+1))) && ((dO[2].VDA<dO[3].VDA)&&(dO[3].VDA===dO[2].VDA+1)) && ((dO[3].VDA<dO[4].VDA)&&(dO[4].VDA===dO[3].VDA+1))){
         console.warn("  ESCALERA");
         return 20;
     } 
-    if (((dO[0]===dO[1]) && (dO[1]===dO[2]) && (dO[2]!=dO[3]) && (dO[3]===dO[4])) || ((dO[0]===dO[1]) && (dO[1]!=dO[2]) && (dO[2]===dO[3]) && (dO[3]===dO[4]))){
+    if (((dO[0].VDA===dO[1].VDA) && (dO[1].VDA===dO[2].VDA) && (dO[2].VDA!=dO[3].VDA) && (dO[3].VDA===dO[4].VDA)) || ((dO[0].VDA===dO[1].VDA) && (dO[1].VDA!=dO[2].VDA) && (dO[2].VDA===dO[3].VDA) && (dO[3].VDA===dO[4].VDA))){
         console.warn("  FULL");
         return 30;        
     }  
-    if (((dO[0]===dO[1]) && (dO[1]===dO[2]) && (dO[2]===dO[3]) && (dO[3]!=dO[4]))  || ((dO[0]!=dO[1]) && (dO[1]===dO[2]) && (dO[2]===dO[3]) && (dO[3]===dO[4]))){
+    if (((dO[0].VDA===dO[1].VDA) && (dO[1].VDA===dO[2].VDA) && (dO[2].VDA===dO[3].VDA) && (dO[3].VDA!=dO[4].VDA))  || ((dO[0].VDA!=dO[1].VDA) && (dO[1].VDA===dO[2].VDA) && (dO[2].VDA===dO[3].VDA) && (dO[3].VDA===dO[4].VDA))){
         console.warn("  POKER");
         return 40;        
     }
-    if (((dO[0]===dO[1]) && (dO[1]===dO[2]) && (dO[2]===dO[3]) && (dO[3]===dO[4]))){
+    if (((dO[0].VDA===dO[1].VDA) && (dO[1].VDA===dO[2].VDA) && (dO[2].VDA===dO[3].VDA) && (dO[3].VDA===dO[4].VDA))){
         console.warn("  GENERALA");
         return 50;        
     }
@@ -51,8 +50,8 @@ export class Generala extends Cubilete{
   jugarLanzarDados(cantidadTiros:number,jugador:Persona):number{
     let puntaje:number=0;
     for (let tiradas = 1; tiradas <= cantidadTiros; tiradas=tiradas+1) {
-        this.lanzarCubilete(5);
-        puntaje=puntaje+this.puntosObtenidos(this.dados);
+        this.cubilete.lanzarCubilete(5);
+        puntaje=puntaje+this.puntosObtenidos(this.cubilete.arregloDados);
     }
     console.log("----------------PUNTOS--------------------");
     console.warn(` Puntaje obtenido por ${jugador.nickname}: ${puntaje}`);

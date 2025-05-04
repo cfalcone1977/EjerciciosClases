@@ -1,38 +1,19 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Generala = void 0;
 var readlineSync = require("readline-sync");
-var cubilete_1 = require("./cubilete");
-var Generala = /** @class */ (function (_super) {
-    __extends(Generala, _super);
-    function Generala(dados) {
-        var _this = _super.call(this, dados) || this;
-        _this.dados = dados;
-        return _this;
+var Generala = /** @class */ (function () {
+    function Generala(cubilete1) {
+        this.cubilete = cubilete1;
     }
     Generala.prototype.ordenarDados = function (dadosD) {
         var aux = 0;
         for (var i = 0; i < dadosD.length; i = i + 1) {
             for (var i2 = 0; i2 < dadosD.length; i2 = i2 + 1) {
-                if (dadosD[i] < dadosD[i2]) {
-                    aux = dadosD[i2];
-                    dadosD[i2] = dadosD[i];
-                    dadosD[i] = aux;
+                if (dadosD[i].VDA < dadosD[i2].VDA) {
+                    aux = dadosD[i2].VDA;
+                    dadosD[i2].VDA = dadosD[i].VDA;
+                    dadosD[i].VDA = aux;
                 }
             }
         }
@@ -41,19 +22,19 @@ var Generala = /** @class */ (function (_super) {
     Generala.prototype.puntosObtenidos = function (dados) {
         var dO = this.ordenarDados(dados);
         var puntos = 0;
-        if (((dO[0] < dO[1]) && (dO[1] === dO[0] + 1)) && ((dO[1] < dO[2]) && (dO[2] === ((dO[1]) + 1))) && ((dO[2] < dO[3]) && (dO[3] === dO[2] + 1)) && ((dO[3] < dO[4]) && (dO[4] === dO[3] + 1))) {
+        if (((dO[0].VDA < dO[1].VDA) && (dO[1].VDA === dO[0].VDA + 1)) && ((dO[1].VDA < dO[2].VDA) && (dO[2].VDA === ((dO[1].VDA) + 1))) && ((dO[2].VDA < dO[3].VDA) && (dO[3].VDA === dO[2].VDA + 1)) && ((dO[3].VDA < dO[4].VDA) && (dO[4].VDA === dO[3].VDA + 1))) {
             console.warn("  ESCALERA");
             return 20;
         }
-        if (((dO[0] === dO[1]) && (dO[1] === dO[2]) && (dO[2] != dO[3]) && (dO[3] === dO[4])) || ((dO[0] === dO[1]) && (dO[1] != dO[2]) && (dO[2] === dO[3]) && (dO[3] === dO[4]))) {
+        if (((dO[0].VDA === dO[1].VDA) && (dO[1].VDA === dO[2].VDA) && (dO[2].VDA != dO[3].VDA) && (dO[3].VDA === dO[4].VDA)) || ((dO[0].VDA === dO[1].VDA) && (dO[1].VDA != dO[2].VDA) && (dO[2].VDA === dO[3].VDA) && (dO[3].VDA === dO[4].VDA))) {
             console.warn("  FULL");
             return 30;
         }
-        if (((dO[0] === dO[1]) && (dO[1] === dO[2]) && (dO[2] === dO[3]) && (dO[3] != dO[4])) || ((dO[0] != dO[1]) && (dO[1] === dO[2]) && (dO[2] === dO[3]) && (dO[3] === dO[4]))) {
+        if (((dO[0].VDA === dO[1].VDA) && (dO[1].VDA === dO[2].VDA) && (dO[2].VDA === dO[3].VDA) && (dO[3].VDA != dO[4].VDA)) || ((dO[0].VDA != dO[1].VDA) && (dO[1].VDA === dO[2].VDA) && (dO[2].VDA === dO[3].VDA) && (dO[3].VDA === dO[4].VDA))) {
             console.warn("  POKER");
             return 40;
         }
-        if (((dO[0] === dO[1]) && (dO[1] === dO[2]) && (dO[2] === dO[3]) && (dO[3] === dO[4]))) {
+        if (((dO[0].VDA === dO[1].VDA) && (dO[1].VDA === dO[2].VDA) && (dO[2].VDA === dO[3].VDA) && (dO[3].VDA === dO[4].VDA))) {
             console.warn("  GENERALA");
             return 50;
         }
@@ -62,8 +43,8 @@ var Generala = /** @class */ (function (_super) {
     Generala.prototype.jugarLanzarDados = function (cantidadTiros, jugador) {
         var puntaje = 0;
         for (var tiradas = 1; tiradas <= cantidadTiros; tiradas = tiradas + 1) {
-            this.lanzarCubilete(5);
-            puntaje = puntaje + this.puntosObtenidos(this.dados);
+            this.cubilete.lanzarCubilete(5);
+            puntaje = puntaje + this.puntosObtenidos(this.cubilete.arregloDados);
         }
         console.log("----------------PUNTOS--------------------");
         console.warn(" Puntaje obtenido por ".concat(jugador.nickname, ": ").concat(puntaje));
@@ -120,7 +101,7 @@ var Generala = /** @class */ (function (_super) {
         }
     };
     return Generala;
-}(cubilete_1.Cubilete));
+}());
 exports.Generala = Generala;
 //const jug1=new Persona("Cristian","Falcone",26134695,new Date(1977,10,7),"Cypher");
 //const jug2=new Persona("Natalia","Tutora",33333333,new Date(2000,10,7),"Naty");
