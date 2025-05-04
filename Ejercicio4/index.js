@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var rectangulo_1 = require("./rectangulo");
+var primerRectangulo = new rectangulo_1.Rectangulo(7, 3);
+var segundoRectangulo = new rectangulo_1.Rectangulo(8, 12);
+var tercerRectangulo = new rectangulo_1.Rectangulo(10, 25);
+primerRectangulo.mostrarCalculoArea();
+primerRectangulo.mostrarCalculoPerimetro();
+segundoRectangulo.mostrarCalculoArea();
+segundoRectangulo.mostrarCalculoPerimetro();
+tercerRectangulo.mostrarCalculoArea();
+tercerRectangulo.mostrarCalculoPerimetro();

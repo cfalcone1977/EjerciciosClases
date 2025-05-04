@@ -1,0 +1,24 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var DatosClases_1 = require("./DatosClases");
+var escuelaN1 = new DatosClases_1.Escuela(DatosClases_1.arregloAlumnos, DatosClases_1.arregloMaestros);
+var NuevoAlumno00001 = new DatosClases_1.Alumno("Cristian Falcone", 5);
+var AlumnoInexistente00002 = new DatosClases_1.Alumno("Juan de los palotes", 7);
+var MaestroNuevo001 = new DatosClases_1.Maestro("Prof. Fernando Comas");
+escuelaN1.conocerNota("Juan Capra");
+escuelaN1.conocerNota("Cristian Falcone");
+escuelaN1.ListadoAlumnos();
+escuelaN1.matricularExpulsar(0, NuevoAlumno00001); // "0" MATRICULAR "1" EXPULSAR
+escuelaN1.ListadoAlumnos();
+escuelaN1.matricularExpulsar(1, NuevoAlumno00001);
+escuelaN1.ListadoAlumnos();
+escuelaN1.matricularExpulsar(0, AlumnoInexistente00002);
+escuelaN1.matricularExpulsar(0, NuevoAlumno00001);
+escuelaN1.ListadoAlumnos();
+escuelaN1.ListadoProfesores();
+escuelaN1.contratarDespedir(0, MaestroNuevo001);
+escuelaN1.ListadoProfesores();
+escuelaN1.contratarDespedir(1, { nombre: "Prof. María García" });
+escuelaN1.ListadoProfesores();
+escuelaN1.contratarDespedir(0, { nombre: "Prof. María García" });
+escuelaN1.contratarDespedir(0, { nombre: "Prof. María García" });

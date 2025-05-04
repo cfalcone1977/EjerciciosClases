@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var libro_1 = require("./libro");
+var libro1 = new libro_1.Libro("", "", 0, "");
+var libro2 = new libro_1.Libro("", "", 0, "");
+var libro3 = new libro_1.Libro("", "", 0, "");
+libro1.cargarLibro();
+libro1.informarDatosLibro();
+libro2.cargarLibro();
+libro2.informarDatosLibro();
+libro3.cargarLibro();
+libro3.informarDatosLibro();
