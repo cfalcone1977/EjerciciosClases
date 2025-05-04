@@ -3,13 +3,13 @@ import { Persona } from './persona';
 import { Cubilete, Dado } from "./cubilete";
 
 export class Generala{
-  cubilete:Cubilete;
+  private cubilete:Cubilete;
   
   constructor(cubilete1:Cubilete){
       this.cubilete=cubilete1;
   }
 
-  ordenarDados(dadosD:Dado[]):Dado[]{
+  private ordenarDados(dadosD:Dado[]):Dado[]{
      let aux:number=0;
      for (let i = 0; i < dadosD.length; i=i+1) {
         for (let i2 = 0; i2 < dadosD.length; i2=i2+1) {
@@ -25,7 +25,7 @@ export class Generala{
   }
 
 
-  puntosObtenidos(dados:Dado[]):number{
+  private puntosObtenidos(dados:Dado[]):number{
     let dO:Dado[]=this.ordenarDados(dados);
     let puntos:number=0
     if (((dO[0].VDA<dO[1].VDA) && (dO[1].VDA===dO[0].VDA+1)) && ((dO[1].VDA<dO[2].VDA) && (dO[2].VDA===((dO[1].VDA)+1))) && ((dO[2].VDA<dO[3].VDA)&&(dO[3].VDA===dO[2].VDA+1)) && ((dO[3].VDA<dO[4].VDA)&&(dO[4].VDA===dO[3].VDA+1))){
@@ -47,7 +47,7 @@ export class Generala{
     return 0;
     }
 
-  jugarLanzarDados(cantidadTiros:number,jugador:Persona):number{
+  private jugarLanzarDados(cantidadTiros:number,jugador:Persona):number{
     let puntaje:number=0;
     for (let tiradas = 1; tiradas <= cantidadTiros; tiradas=tiradas+1) {
         this.cubilete.lanzarCubilete(5);
@@ -88,7 +88,7 @@ if (P1===P2){
        }                       
   }
 
-  multiplayer(CT:number,J1:Persona,J2:Persona,J3?:Persona,J4?:Persona){
+  public multiplayer(CT:number,J1:Persona,J2:Persona,J3?:Persona,J4?:Persona){
     let empate:boolean=true;
     while (empate){
      let P1,P2,P3,P4:number=0;
@@ -107,58 +107,3 @@ if (P1===P2){
   }
 }
 }
-
-
-//const jug1=new Persona("Cristian","Falcone",26134695,new Date(1977,10,7),"Cypher");
-//const jug2=new Persona("Natalia","Tutora",33333333,new Date(2000,10,7),"Naty");
-//const tirada1=new Generala(jug1,[0,0,0,0,0]);
-
-//tirada1.jugarLanzarDados(4,jug1);
-//tirada1.jugarLanzarDados(4,jug2);
-//tirada1.multiplayer(4,jug1,jug2);
-
-
-
-
-
-
-/// PRIMERA PRUEBA PARA CONTROLAR PUNTOS
-/*puntosObtenidos(dados:number[]){
-     let contador:number[];
-         contador=[1,1,1,1,1];
-         let InCantElem:number=0;
-         let acu:number=0;
-     for (let i = 0; i < dados.length; i=i+1) {
-         for (let i2 = 0; i2 < dados.length; i2=i2+1) {
-            if (i!=i2){
-                      if (dados[i]===dados[i2]){
-                        dados.splice(i2,1);
-                        i2=i2-1;
-                        contador[i]=contador[i]+1;
-                      }
-            
-         }
-            
-         }
-     }
-   for (let i = 0; i < contador.length; i=i+1) {
-        acu=acu+contador[i];
-        if (acu<=5){
-                   InCantElem=InCantElem+1;
-                   }
-    
-   }
-   contador.splice(InCantElem,(5-InCantElem));
-   console.log(contador);
-  }*/
-
-/* NO HACE FALTA jugador 
-export class Generala extends Cubilete{
-  //jugador:Persona;
-  dados:number[];
-  
-  constructor(dados:number[]){
-      super(dados);
-      //this.jugador=jugador;
-      this.dados=dados;
-  }*/

@@ -1,9 +1,9 @@
 export class Dado{
-    VDA:number=0;
+    public VDA:number=0;
     constructor(){
         this.VDA=(Math.floor(Math.random()*6))+1;
     }
-    lanzarDado():number{
+    public lanzarDado():number{
         this.VDA=(Math.floor(Math.random()*6))+1;
         return (this.VDA);
     }
@@ -11,13 +11,13 @@ export class Dado{
 
 export class Cubilete{
 
-  arregloDados: Dado[];
+  public arregloDados: Dado[];
 
   constructor (dados:Dado[]){
         this.arregloDados=dados;
 
   }
-  lanzarCubilete(cantDados:number){
+  public lanzarCubilete(cantDados:number){
     //let puntos:number=0;
     console.log("------------------------------------"); 
     for (let i = 0; i <cantDados; i=i+1) {
