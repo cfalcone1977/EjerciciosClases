@@ -90,6 +90,7 @@ if (P1===P2){
 
   public multiplayer(CT:number,J1:Persona,J2:Persona,J3?:Persona,J4?:Persona){
     let empate:boolean=true;
+    let pausa:string="";
     while (empate){
      let P1,P2,P3,P4:number=0;
      P1=this.jugarLanzarDados(CT,J1);
@@ -105,5 +106,6 @@ if (P1===P2){
                  empate=true;
                 } else empate=false;
   }
+ pausa=readlineSync.question("Presiona Enter TERMINAR!.");   
 }
 }

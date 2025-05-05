@@ -1,8 +1,8 @@
 export class Persona{
     public nombre:string;
     public apellido:string;
-    public documento:number;
-    public nacimiento:Date=new Date;
+    private documento:number;
+    private nacimiento:Date=new Date;
     public nickname:string;
     constructor(nom:string, apel:string, doc:number,fnac:Date,nick:string){
        this.nombre=nom;

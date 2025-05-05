@@ -82,6 +82,7 @@ var Generala = /** @class */ (function () {
     };
     Generala.prototype.multiplayer = function (CT, J1, J2, J3, J4) {
         var empate = true;
+        var pausa = "";
         while (empate) {
             var P1 = void 0, P2 = void 0, P3 = void 0, P4 = 0;
             P1 = this.jugarLanzarDados(CT, J1);
@@ -99,6 +100,7 @@ var Generala = /** @class */ (function () {
             else
                 empate = false;
         }
+        pausa = readlineSync.question("Presiona Enter TERMINAR!.");
     };
     return Generala;
 }());
